@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/nav_home"
+        android:icon="@drawable/home"
+        android:fontFamily="@font/helveticabold"
+        android:title="Home" />
+
+    <item
+        android:id="@+id/nav_hospital"
+        android:icon="@drawable/hospital"
+        android:fontFamily="@font/helveticabold"
+        android:title="Hospital" />
+
+    <item
+        android:id="@+id/nav_summary"
+        android:icon="@drawable/summary"
+        android:fontFamily="@font/helveticabold"
+        android:title="Summary" />
+
+
+</menu>
