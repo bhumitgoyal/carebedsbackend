@@ -66,9 +66,29 @@ class DataInitializer(
             admissionType = "Urgent",
             medication = "Ibuprofen",
             testResults = "Normal",
-            registeredHospital = hospital1,
-            registeredBed = bed1
+            //registeredHospital = hospita,
+            //registeredBed = bed1
         )
+        val patient2 = Patient(
+            name = "Jane Smith",
+            age = 75,
+            priority = "",
+            address = "NewCity",
+            role = "ROLE_PATIENT",
+            email = "janesmith@example.com",
+            phoneNumber = "1112223333",
+            password = "password3",
+            location = "40.7128,-74.0060",
+            gender = "Female",
+            bloodType = "O+",
+            medicalCondition = "Diabetes",
+            admissionType = "Urgent",
+            medication = "Ibuprofen",
+            testResults = "Normal",
+            //registeredHospital = hospital1,
+            //registeredBed = bed1
+        )
+
 
 //        val patient2 = Patient(
 //            name = "Jane Smith",
@@ -108,10 +128,10 @@ class DataInitializer(
 //            registeredBed = bed3
 //        )
 
-        patientRepository.saveAll(listOf(patient1))
+        patientRepository.saveAll(listOf(patient1, patient2))
 
         // Linking patients to beds
-        bed1.patient = patient1
+    //    bed1.patient = patient1
         //bed2.patient = patient2
         //bed3.patient = patient3
 

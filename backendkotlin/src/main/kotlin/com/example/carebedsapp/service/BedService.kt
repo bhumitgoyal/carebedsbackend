@@ -34,11 +34,7 @@ class BedService(
         val patient = patientRepository.findById(patientId).orElseThrow {
             ResourceNotFoundException("Patient not found")
         }
-        val hospital = patient.registeredHospital?.let {
-            hospitalRepository.findById(it.id).orElseThrow {
-                ResourceNotFoundException("Hospital not found")
-            }
-        }
+        val hospital = bed.hospital
         if(hospital!=null){
             hospitalService.admitPatient(patientId,hospital.id)
         }

@@ -1,4 +1,3 @@
-const axios = require("axios");
 const { calculateDistance } = require("../utils/distanceUtils");
 const { getPatientPriority } = require("./mlController");
 
@@ -6,26 +5,16 @@ const { getPatientPriority } = require("./mlController");
 let patientQueue = [];
 
 // Main function to assign patients to hospitals or add them to the queue
-const assignBeds = async () => {
-  const patientsResponse = await axios.get("http://localhost:8080/patients");
-  const hospitalsResponse = await axios.get("http://localhost:8080/hospital");
+// Assign patients and process the queue
+const assignBeds = async (patients, hospitals) => {
+  await assignPrioritiesToPatients(patients); // Fetch and assign priorities to ALL patients
 
-  const patients = patientsResponse.data;
-  const hospitals = hospitalsResponse.data;
-
-  // Log the hospitals after fetching
-  console.log("Hospitals fetched:", JSON.stringify(hospitals, null, 2));
-
-  await assignPrioritiesToPatients(patients); // Fetch and assign priorities
-  const sortedPatients = sortPatientsByPriority(patients);
-
+  const sortedPatients = sortPatientsByPriority(patients); // Now sort them by priority
   for (let patient of sortedPatients) {
     if (!patient.assigned) {
       const hospital = findAvailableHospital(patient, hospitals);
       if (hospital) {
-        console.log(`Hospital before assignment: ${JSON.stringify(hospital, null, 2)}`);
         assignPatientToHospital(patient, hospital);
-        console.log(`Hospital after assignment: ${JSON.stringify(hospital, null, 2)}`); // Log hospital after assignment
       } else {
         queuePatient(patient);
       }
@@ -39,7 +28,11 @@ const assignBeds = async () => {
 const assignPrioritiesToPatients = async (patients) => {
   for (let patient of patients) {
     const priority = await getPatientPriority(patient);
-    patient.priority = priority;
+    if (priority && priority.prediction) {
+      patient.priority = priority.prediction;
+    } else {
+      console.error(`Error: No priority assigned for patient ${patient.name}`);
+    }
   }
 };
 
@@ -63,8 +56,13 @@ const assignPatientToHospital = (patient, hospital) => {
   if (!hospital.admittedPatients) {
     hospital.admittedPatients = []; // Ensure admittedPatients is initialized
   }
+
+  // Log patient details to ensure priority is set before adding to hospital
+  console.log("Assigning patient:", patient);
+
   patient.assigned = true;
-  hospital.admittedPatients.push(patient);
+  hospital.admittedPatients.push(patient); // Add patient to admitted list
+
   console.log(`Assigned patient ${patient.name} to hospital ${hospital.name}`);
 };
 
@@ -74,7 +72,7 @@ const findAvailableHospital = (patient, hospitals) => {
   let shortestDistance = Infinity;
 
   hospitals.forEach((hospital) => {
-    const distance = calculateDistance(patient.location, hospital.location); // Ensure locations are defined correctly
+    const distance = calculateDistance(patient.location, hospital.location);
     if (hospital.availableBeds > 0 && distance < shortestDistance) {
       closestHospital = hospital;
       shortestDistance = distance;
@@ -103,9 +101,7 @@ const processPatientQueue = (hospitals) => {
       console.log(
         `Assigned patient ${patient.name} to hospital ${hospital.name}`
       );
-      console.log(`Admitted Patients: ${JSON.stringify(hospital.admittedPatients, null, 2)}`); // Check if patients are assigned correctly
     } else {
-      // If no hospital is available, log and do not re-queue the patient
       console.log(
         `No available hospital for patient ${patient.name}. Keeping in queue.`
       );
