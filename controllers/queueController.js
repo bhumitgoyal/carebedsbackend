@@ -1,22 +1,19 @@
 const { patients, hospitals } = require("../data/hardcodedData");
 const { calculateDistance } = require("../utils/distanceUtils");
+const { getPatientPriority } = require("./mlController");
 
-// model flow here:
-// we get patient and hospital data first
-// then we sort the patients in queue according to priority
-// we try to assign patients to hospital that  are nearest to them.
-//if no hospitals available we make a patient queue
-//process the queue again if hospital become available again
-
-let patientQueue = []; // Queue for patients who can't be assigned immediately
+// Queue for patients who can't be assigned immediately
+let patientQueue = [];
 
 // Main function to assign patients to hospitals or add them to the queue
-const assignBeds = () => {
+const assignBeds = async () => {
+  await assignPrioritiesToPatients(patients); // Fetch and assign priorities
+
   const sortedPatients = sortPatientsByPriority(patients);
 
   for (let patient of sortedPatients) {
-    const hospital = findAvailableHospital(patient, hospitals);
-    if (!patients.assigned) {
+    if (!patient.assigned) {
+      const hospital = findAvailableHospital(patient, hospitals);
       if (hospital) {
         assignPatientToHospital(patient, hospital);
       } else {
@@ -28,6 +25,15 @@ const assignBeds = () => {
   processPatientQueue(hospitals); // Process queued patients if beds are available
 };
 
+// Fetch and assign priorities to each patient
+const assignPrioritiesToPatients = async (patients) => {
+  for (let patient of patients) {
+    
+    const priority = await getPatientPriority(patient);
+    patient.priority = priority; // Assign the fetched priority to the patient
+  }
+};
+
 // Sort patients based on priority (High > Medium > Low)
 const sortPatientsByPriority = (patients) => {
   return patients.sort(
@@ -37,15 +43,17 @@ const sortPatientsByPriority = (patients) => {
 
 // Convert priority string to numeric level
 const priorityLevel = (priority) => {
-  return priority === "High" ? 3 : priority === "Medium" ? 2 : 1;
+  if (priority === "High Priority") return 3;
+  if (priority === "Medium Priority") return 2;
+  return 1; // 'Low Priority'
 };
 
 // Assign the patient to a hospital
 const assignPatientToHospital = (patient, hospital) => {
   hospital.availableBeds--;
   hospital.assignedPatients = hospital.assignedPatients || [];
-    hospital.assignedPatients.push(patient);
-    patient.assigned = true;
+  hospital.assignedPatients.push(patient);
+  patient.assigned = true;
   console.log(`Assigned patient ${patient.name} to hospital ${hospital.name}`);
 };
 

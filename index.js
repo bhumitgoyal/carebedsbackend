@@ -1,31 +1,20 @@
-// index.js
 const express = require("express");
-const {
-  assignBeds,
-  findAvailableHospital,
-  assignPatientToHospital,
-  patientQueue, // Import the patient queue
-} = require("./controllers/queueController");
+const { assignBeds, patientQueue } = require("./controllers/queueController");
 const { hospitals } = require("./data/hardcodedData");
 
 const app = express();
 const port = 3000;
 
-// Dummy patient to assign
-const dummyPatient = {
-  id: 99,
-  name: "Patient1",
-  priority: "High",
-  location: { lat: 40.7128, lon: -74.006 }, 
-};
+// Middleware to parse JSON requests
+app.use(express.json());
 
-// Endpoint to assign a hospital to a dummy patient
-app.get("/test", (req, res) => {
+// Endpoint to assign patients and process the queue
+app.get("/test", async (req, res) => {
   // Clear previous queue data for fresh testing
   patientQueue.length = 0;
 
   // Assign patients and process the queue
-  assignBeds();
+  await assignBeds(); // Ensure this is awaited
 
   // Prepare the response to show queue state
   const queueOrder = patientQueue.map((patient) => patient.name); // Get names of queued patients

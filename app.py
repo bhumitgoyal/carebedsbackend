@@ -12,12 +12,12 @@ categorical_columns = ['Gender', 'Blood Type', 'Medical Condition', 'Admission T
 
 # Load the label encoders for each categorical column
 label_encoders = {
-    'Gender': joblib.load('data/label_encoder_Gender.pkl'),
-    'Blood Type': joblib.load('data/label_encoder_Blood_Type.pkl'),
-    'Test Results': joblib.load('data/label_encoder_Test_Results.pkl'),
-    'Medication': joblib.load('data/label_encoder_Medication.pkl'),
-    'Medical Condition': joblib.load('data/label_encoder_Medical_Condition.pkl'),
-    'Admission Type': joblib.load('data/label_encoder_Admission_Type.pkl')
+    'Gender': joblib.load('./data/label_encoder_Gender.pkl'),
+    'Blood Type': joblib.load('./data/label_encoder_Blood Type.pkl'),
+    'Test Results': joblib.load('./data/label_encoder_Test Results.pkl'),
+    'Medication': joblib.load('./data/label_encoder_Medication.pkl'),
+    'Medical Condition': joblib.load('./data/label_encoder_Medical Condition.pkl'),
+    'Admission Type': joblib.load('./data/label_encoder_Admission Type.pkl')
 }
 
 # Endpoint to get predictions
