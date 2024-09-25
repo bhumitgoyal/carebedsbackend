@@ -16,7 +16,7 @@ const dummyPatient = {
   id: 99,
   name: "Patient1",
   priority: "High",
-  location: { lat: 40.7128, lon: -74.006 }, // New York City as a dummy location
+  location: { lat: 40.7128, lon: -74.006 }, 
 };
 
 // Endpoint to assign a hospital to a dummy patient
