@@ -21,7 +21,7 @@ app.get("/test", async (req, res) => {
   const assignedPatients = hospitals.map((hospital) => {
     return {
       hospitalName: hospital.name,
-      assignedPatients: hospital.assignedPatients || [], // Track assigned patients
+      admittedPatients: hospital.admittedPatients || [], // Updated here
     };
   });
 

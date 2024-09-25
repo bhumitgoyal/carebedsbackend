@@ -65,8 +65,10 @@ class HospitalService(
 
         hospital.admittedPatients.add(patient)
         patient.registeredHospital = hospital
+
         hospitalRepository.save(hospital)
         patientRepository.save(patient)
+
     }
     fun getAllHospitals():List<Hospital>{
         return hospitalRepository.findAll()

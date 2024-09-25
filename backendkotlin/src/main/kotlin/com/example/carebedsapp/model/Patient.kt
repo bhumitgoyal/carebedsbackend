@@ -27,13 +27,14 @@ data class Patient(
     val email: String,
     val phoneNumber: String,
     val password: String,
-    val location:String? = null,
-    val gender:String?= null,
-    val bloodType:String?= null,
-    val medicalCondition:String?= null,
-    val admissionType:String?= null,
-    val medications:String?= null,
-    val testResults:String?= null
+    val location: String? = null,
+    val gender: String? = null,
+    val bloodType: String? = null,
+    val medicalCondition: String? = null,
+    val admissionType: String? = null,
+    val testResults: String? = null,
+    val medication: String,
+    val age: Int
 ) {
     // Initialize the derived properties similarly
     val bedNum: Int? get() = registeredBed?.id

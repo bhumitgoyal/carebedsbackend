@@ -13,5 +13,8 @@ data class PatientRequest(
     val medicalCondition: String? = null,
     val admissionType: String? = null,
     val medications: String? = null,
-    val testResults: String? = null
-)
+    val testResults: String? = null,
+    val age: Int,
+) {
+
+}

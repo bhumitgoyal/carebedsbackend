@@ -3,7 +3,6 @@ package com.example.carebedsapp.controller
 import com.example.carebedsapp.model.*
 import com.example.carebedsapp.service.HospitalService
 import com.example.carebedsapp.service.PatientService
-import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 
@@ -17,6 +16,7 @@ class PatientController(private val patientService: PatientService,private val h
          //   ?: return ResponseEntity.notFound().build()
         val newPatient = Patient(
             name = patientRequest.name,
+            age = patientRequest.age,
             priority = "null",
             address = patientRequest.address,
             role = patientRequest.role,
@@ -30,6 +30,7 @@ class PatientController(private val patientService: PatientService,private val h
             admissionType = patientRequest.admissionType,
             medications = patientRequest.medications,
             testResults = patientRequest.testResults,
+            medication = "Ibuprofen",
         )
 
         val savedPatient = patientService.registerPatient(newPatient)

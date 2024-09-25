@@ -21,7 +21,8 @@ data class Hospital(
     var admittedPatients: MutableSet<Patient> = mutableSetOf(),
 
     @OneToMany(mappedBy = "hospital", cascade = [CascadeType.ALL], fetch = FetchType.LAZY)
-    var beds: MutableSet<Bed> = mutableSetOf()
+    var beds: MutableSet<Bed> = mutableSetOf(),
+    val availableBeds: Int
 ) {
     val capacity: Int? get() = beds.size
 

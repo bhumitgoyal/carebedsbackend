@@ -1,4 +1,5 @@
-const { patients, hospitals } = require("../data/hardcodedData");
+const axios = require("axios");
+
 const { calculateDistance } = require("../utils/distanceUtils");
 const { getPatientPriority } = require("./mlController");
 
@@ -7,6 +8,11 @@ let patientQueue = [];
 
 // Main function to assign patients to hospitals or add them to the queue
 const assignBeds = async () => {
+  const patientsResponse = await axios.get("http://localhost:8080/patients");
+  const hospitalsResponse = await axios.get("http://localhost:8080/hospital");
+
+  const patients = patientsResponse.data;
+  const hospitals = hospitalsResponse.data;
   await assignPrioritiesToPatients(patients); // Fetch and assign priorities
 
   const sortedPatients = sortPatientsByPriority(patients);
@@ -28,9 +34,8 @@ const assignBeds = async () => {
 // Fetch and assign priorities to each patient
 const assignPrioritiesToPatients = async (patients) => {
   for (let patient of patients) {
-    
     const priority = await getPatientPriority(patient);
-    patient.priority = priority; 
+    patient.priority = priority;
   }
 };
 
@@ -45,15 +50,15 @@ const sortPatientsByPriority = (patients) => {
 const priorityLevel = (priority) => {
   if (priority === "High Priority") return 3;
   if (priority === "Medium Priority") return 2;
-  return 1; 
+  return 1;
 };
 
 // Assign the patient to a hospital
 const assignPatientToHospital = (patient, hospital) => {
   hospital.availableBeds--;
-  hospital.assignedPatients = hospital.assignedPatients || [];
-  hospital.assignedPatients.push(patient);
+  hospital.admittedPatients = hospital.admittedPatients || [];
   patient.assigned = true;
+  hospital.admittedPatients.push(patient);
   console.log(`Assigned patient ${patient.name} to hospital ${hospital.name}`);
 };
 
@@ -92,6 +97,7 @@ const processPatientQueue = (hospitals) => {
       console.log(
         `Assigned patient ${patient.name} to hospital ${hospital.name}`
       );
+      console.log(hospital.admittedPatients); // Check if patients are assigned correctly
     } else {
       // If no hospital is available, log and do not re-queue the patient
       console.log(
@@ -102,7 +108,6 @@ const processPatientQueue = (hospitals) => {
     }
   }
 };
-
 
 module.exports = {
   assignBeds,
