@@ -1,0 +1,14 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/nav_h_patients"
+        android:icon="@drawable/patients"
+        android:title="Patients" />
+    <item
+        android:id="@+id/nav_h_beds"
+        android:icon="@drawable/beds"
+        android:title="Beds" />
+    <item
+        android:id="@+id/nav_h_scan"
+        android:icon="@drawable/qr"
+        android:title="Scan QR" />
+</menu>

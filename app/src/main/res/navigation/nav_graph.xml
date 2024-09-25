@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/patientDashboard">
+
+
+    <fragment
+        android:id="@+id/patientDashboard"
+        android:name="com.example.carebedsfe.fragment.PatientDashboard"
+        android:label="fragment_patient_dashboard"
+        tools:layout="@layout/fragment_patient_dashboard" >
+        <action
+            android:id="@+id/action_patientDashboard_to_patientHospitalDashboard"
+            app:destination="@id/patientHospitalDashboard" />
+        <action
+            android:id="@+id/action_patientDashboard_to_patientSummary"
+            app:destination="@id/patientSummary" />
+    </fragment>
+    <fragment
+        android:id="@+id/patientHospitalDashboard"
+        android:name="com.example.carebedsfe.fragment.PatientHospitalDashboard"
+        android:label="fragment_patient_hospital_dashboard"
+        tools:layout="@layout/fragment_patient_hospital_dashboard" >
+        <action
+            android:id="@+id/action_patientHospitalDashboard_to_patientDashboard"
+            app:destination="@id/patientDashboard" />
+    </fragment>
+    <fragment
+        android:id="@+id/patientSummary"
+        android:name="com.example.carebedsfe.fragment.PatientSummary"
+        android:label="fragment_patient_summary"
+        tools:layout="@layout/fragment_patient_summary" >
+        <action
+            android:id="@+id/action_patientSummary_to_patientDashboard"
+            app:destination="@id/patientDashboard" />
+    </fragment>
+</navigation>

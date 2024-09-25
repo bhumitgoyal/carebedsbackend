@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/organizer_nav_graph"
+    app:startDestination="@id/hospitalPatientDashboard">
+
+    <fragment
+        android:id="@+id/hospitalBedsDashboard"
+        android:name="com.example.carebedsfe.fragment.HospitalBedsDashboard"
+        android:label="fragment_hospital_beds_dashboard"
+        tools:layout="@layout/fragment_hospital_beds_dashboard" >
+        <action
+            android:id="@+id/action_hospitalBedsDashboard_to_hospitalPatientDashboard"
+            app:destination="@id/hospitalPatientDashboard" />
+    </fragment>
+    <fragment
+        android:id="@+id/hospitalPatientDashboard"
+        android:name="com.example.carebedsfe.fragment.HospitalPatientDashboard"
+        android:label="fragment_hospital_patient_dashboard"
+        tools:layout="@layout/fragment_hospital_patient_dashboard" >
+        <action
+            android:id="@+id/action_hospitalPatientDashboard_to_hospitalBedsDashboard"
+            app:destination="@id/hospitalBedsDashboard" />
+        <action
+            android:id="@+id/action_hospitalPatientDashboard_to_hospitalScanQRDashboard"
+            app:destination="@id/hospitalScanQRDashboard" />
+    </fragment>
+    <fragment
+        android:id="@+id/hospitalScanQRDashboard"
+        android:name="com.example.carebedsfe.fragment.HospitalScanQRDashboard"
+        android:label="fragment_hospital_scan_q_r_dashboard"
+        tools:layout="@layout/fragment_hospital_scan_q_r_dashboard" >
+        <action
+            android:id="@+id/action_hospitalScanQRDashboard_to_hospitalPatientDashboard"
+            app:destination="@id/hospitalPatientDashboard" />
+    </fragment>
+</navigation>

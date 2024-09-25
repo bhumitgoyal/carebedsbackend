@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragment.PatientDashboard">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="10dp"
+        android:backgroundTint="#FFFFFF">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp"
+                android:gravity="center_horizontal">
+
+                <!-- Name Card -->
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="6dp"
+                    android:backgroundTint="#F4F6FC">
+
+                    <TextView
+                        android:id="@+id/patientName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="John Doe"
+                        android:textSize="22sp"
+                        android:textStyle="bold"
+                        android:textColor="@android:color/black"
+                        android:padding="16dp"
+                        android:gravity="center"/>
+                </androidx.cardview.widget.CardView>
+
+                <!-- Priority Card -->
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="6dp"
+                    android:backgroundTint="#F4F6FC">
+
+                    <TextView
+                        android:id="@+id/patientPriority"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="High Priority"
+                        android:textSize="18sp"
+                        android:textColor="@android:color/black"
+                        android:padding="12dp"
+                        android:gravity="center"/>
+                </androidx.cardview.widget.CardView>
+
+                <!-- Email Card -->
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="6dp"
+                    android:backgroundTint="#F4F6FC">
+
+                    <TextView
+                        android:id="@+id/patientEmail"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="john.doe@email.com"
+                        android:textSize="18sp"
+                        android:textColor="@android:color/black"
+                        android:padding="12dp"
+                        android:gravity="center"/>
+                </androidx.cardview.widget.CardView>
+
+                <!-- Phone Number Card -->
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="6dp"
+                    android:backgroundTint="#F4F6FC">
+
+                    <TextView
+                        android:id="@+id/patientPhone"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="+1234567890"
+                        android:textSize="18sp"
+                        android:textColor="@android:color/black"
+                        android:padding="12dp"
+                        android:gravity="center"/>
+                </androidx.cardview.widget.CardView>
+
+                <!-- Location Card -->
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="6dp"
+                    android:backgroundTint="#F4F6FC">
+
+                    <TextView
+                        android:id="@+id/patientLocation"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="City, Country"
+                        android:textSize="18sp"
+                        android:textColor="@android:color/black"
+                        android:padding="12dp"
+                        android:gravity="center"/>
+                </androidx.cardview.widget.CardView>
+
+                <!-- Gender Card -->
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="6dp"
+                    android:backgroundTint="#F4F6FC">
+
+                    <TextView
+                        android:id="@+id/patientGender"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Male"
+                        android:textSize="18sp"
+                        android:textColor="@android:color/black"
+                        android:padding="12dp"
+                        android:gravity="center"/>
+                </androidx.cardview.widget.CardView>
+
+                <!-- Blood Type Card -->
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="6dp"
+                    android:backgroundTint="#F4F6FC">
+
+                    <TextView
+                        android:id="@+id/patientBloodType"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="O+"
+                        android:textSize="18sp"
+                        android:textColor="@android:color/black"
+                        android:padding="12dp"
+                        android:gravity="center"/>
+                </androidx.cardview.widget.CardView>
+
+                <!-- Medical Condition Card -->
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="6dp"
+                    android:backgroundTint="#F4F6FC">
+
+                    <TextView
+                        android:id="@+id/patientCondition"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Hypertension"
+                        android:textSize="18sp"
+                        android:textColor="@android:color/black"
+                        android:padding="12dp"
+                        android:gravity="center"/>
+                </androidx.cardview.widget.CardView>
+
+                <!-- View Bed Button -->
+                <Button
+                    android:id="@+id/viewBedButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="View Bed"
+                    android:layout_marginTop="16dp"
+                    android:padding="16dp"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:backgroundTint="#3F51B5"
+                    android:textColor="#FFFFFF"/>
+            </LinearLayout>
+        </ScrollView>
+    </androidx.cardview.widget.CardView>
+
+    <!-- Floating Action Button for Editing -->
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabEditPatient"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="16dp"
+        android:contentDescription="Edit Patient Info"
+        android:src="@drawable/ic_edit"
+        app:backgroundTint="@color/design_default_color_primary"
+        app:tint="@android:color/white"/>
+
+</FrameLayout>
