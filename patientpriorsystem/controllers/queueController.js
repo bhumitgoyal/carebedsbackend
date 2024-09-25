@@ -1,5 +1,4 @@
 const axios = require("axios");
-
 const { calculateDistance } = require("../utils/distanceUtils");
 const { getPatientPriority } = require("./mlController");
 
@@ -13,15 +12,20 @@ const assignBeds = async () => {
 
   const patients = patientsResponse.data;
   const hospitals = hospitalsResponse.data;
-  await assignPrioritiesToPatients(patients); // Fetch and assign priorities
 
+  // Log the hospitals after fetching
+  console.log("Hospitals fetched:", JSON.stringify(hospitals, null, 2));
+
+  await assignPrioritiesToPatients(patients); // Fetch and assign priorities
   const sortedPatients = sortPatientsByPriority(patients);
 
   for (let patient of sortedPatients) {
     if (!patient.assigned) {
       const hospital = findAvailableHospital(patient, hospitals);
       if (hospital) {
+        console.log(`Hospital before assignment: ${JSON.stringify(hospital, null, 2)}`);
         assignPatientToHospital(patient, hospital);
+        console.log(`Hospital after assignment: ${JSON.stringify(hospital, null, 2)}`); // Log hospital after assignment
       } else {
         queuePatient(patient);
       }
@@ -56,7 +60,9 @@ const priorityLevel = (priority) => {
 // Assign the patient to a hospital
 const assignPatientToHospital = (patient, hospital) => {
   hospital.availableBeds--;
-  hospital.admittedPatients = hospital.admittedPatients || [];
+  if (!hospital.admittedPatients) {
+    hospital.admittedPatients = []; // Ensure admittedPatients is initialized
+  }
   patient.assigned = true;
   hospital.admittedPatients.push(patient);
   console.log(`Assigned patient ${patient.name} to hospital ${hospital.name}`);
@@ -68,7 +74,7 @@ const findAvailableHospital = (patient, hospitals) => {
   let shortestDistance = Infinity;
 
   hospitals.forEach((hospital) => {
-    const distance = calculateDistance(patient.location, hospital.location);
+    const distance = calculateDistance(patient.location, hospital.location); // Ensure locations are defined correctly
     if (hospital.availableBeds > 0 && distance < shortestDistance) {
       closestHospital = hospital;
       shortestDistance = distance;
@@ -97,7 +103,7 @@ const processPatientQueue = (hospitals) => {
       console.log(
         `Assigned patient ${patient.name} to hospital ${hospital.name}`
       );
-      console.log(hospital.admittedPatients); // Check if patients are assigned correctly
+      console.log(`Admitted Patients: ${JSON.stringify(hospital.admittedPatients, null, 2)}`); // Check if patients are assigned correctly
     } else {
       // If no hospital is available, log and do not re-queue the patient
       console.log(

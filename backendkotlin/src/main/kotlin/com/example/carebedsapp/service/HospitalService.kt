@@ -8,6 +8,7 @@ import com.example.carebedsapp.model.Patient
 import com.example.carebedsapp.repository.BedRepository
 import com.example.carebedsapp.repository.HospitalRepository
 import com.example.carebedsapp.repository.PatientRepository
+import jakarta.transaction.Transactional
 import org.springframework.stereotype.Service
 
 @Service
@@ -54,6 +55,7 @@ class HospitalService(
             .orElseThrow { ResourceNotFoundException("Hospital not found") }
     }
 
+    @Transactional
     fun admitPatient(patientId: Int, hospitalId: Int) {
         val hospital = getHospitalById(hospitalId)
         val patient = patientRepository.findById(patientId)

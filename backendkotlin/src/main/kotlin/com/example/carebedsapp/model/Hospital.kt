@@ -16,7 +16,7 @@ data class Hospital(
     val password: String,
     val role: String,
 
-    @JsonIgnore
+    //@JsonIgnore
     @OneToMany(mappedBy = "registeredHospital", cascade = [CascadeType.ALL], fetch = FetchType.LAZY)
     var admittedPatients: MutableSet<Patient> = mutableSetOf(),
 

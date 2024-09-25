@@ -28,7 +28,6 @@ class PatientController(private val patientService: PatientService,private val h
             bloodType = patientRequest.bloodType,
             medicalCondition = patientRequest.medicalCondition,
             admissionType = patientRequest.admissionType,
-            medications = patientRequest.medications,
             testResults = patientRequest.testResults,
             medication = "Ibuprofen",
         )

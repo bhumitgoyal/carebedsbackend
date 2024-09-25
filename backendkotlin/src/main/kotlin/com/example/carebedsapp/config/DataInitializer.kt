@@ -26,7 +26,7 @@ class DataInitializer(
             password = "password1",
             role = "ROLE_HOSPITAL",
             availableBeds = 1,
-            admittedPatients = mutableSetOf(), // Initialize assignedPatients as an empty list
+            // Initialize assignedPatients as an empty list
         )
 
 
@@ -53,13 +53,13 @@ class DataInitializer(
         val patient1 = Patient(
             name = "John Doe",
             age = 17,
-            priority = "High", // This can be dynamically calculated later
+            priority = "",
             address = "789 Elm St, Citytown",
             role = "ROLE_PATIENT",
             email = "johndoe@example.com",
             phoneNumber = "1112223333",
             password = "password3",
-            location = "40.7128,-74.0060", // Sample lat/lon for New York
+            location = "40.7128,-74.0060",
             gender = "Male",
             bloodType = "O+",
             medicalCondition = "Hypertension",
