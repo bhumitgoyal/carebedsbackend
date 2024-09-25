@@ -1,0 +1,97 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CareBeds</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="style2.css" rel="stylesheet">
+</head>
+<body>
+    <nav id="mainNavbar" class="navbar navbar-dark navbar-expand-md py-0 fixed-top">
+        <a href="#" class="navbar-brand">CareBeds<img class="image-fluid logo" src="images/logo.jpg"> </a>
+        <button class="navbar-toggler" data-toggle="collapse" data-target="#NavLinks">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-between pr-2" id="NavLinks" aria-label="Toggle Navbar">
+            <ul class="navbar-nav">
+                <li><a class="nav-link" href="#ab-us">About Us</a></li>
+                <li><a class="nav-link" href="pat-portal.html">Book a Bed</a></li>
+                <li><a class="nav-link">Patient History</a></li>
+            </ul>
+            <button type="button" class="btn btn-success" id="login"><a href="login.html">Log In</a></button>
+        </div>
+    </nav>
+    
+    <section id="mainBox" class="container-fluid px-0 content ">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <div class="text-white text-left d-lg-block mt-5 mb-4 mb-lg-4" id="heading">
+                    <h1 class="navbar-brand para1 cb2">CareBeds</h1>
+                    <p class="para1">Our Hospital Queue Management System (Care Beds) is a comprehensive, AI-powered solution
+                        designed to optimize patient flow and resource allocation in healthcare facilities. It features real-time
+                        tracking of bed availability and OPD queues, predictive analytics for demand forecasting, and a triage-based patient prioritization system. The platform facilitates city-wide resource sharing, enabling smooth
+                        patient transfers and efficient crisis management during emergencies. </p>
+                    <button type="button" class="btn btn-primary para1"><a href="pat-portal.html">Book a bed</a></button>
+                </div>
+            </div>
+            <div class="col-lg-6 ml-5">
+                <img src="images/bed1.jpg" class="image-fluid pic-bed-1">
+            </div>
+        </div>
+    </section>
+    <section id="mainBox" class="container-fluid py-0 content"></section>
+        <div class="row align-items-center">
+            <div class="col-lg-6 order-lg-2 ">
+                <div class="text-white text-left d-lg-block mt-5 " id="heading">
+                    <h1 class="navbar-brand para1 cb2">CareBeds+</h1>
+                    <p class="para1">Our Hospital Queue Management System (Care Beds) is a comprehensive, AI-powered solution
+                        designed to optimize patient flow and resource allocation in healthcare facilities. It features real-time
+                        tracking of bed availability and OPD queues, predictive analytics for demand forecasting, and a triage-based patient prioritization system. The platform facilitates city-wide resource sharing, enabling smooth
+                        patient transfers and efficient crisis management during emergencies. </p>
+                    <button type="button" class="btn btn-primary para1 mb-3"><a href="hos-portal.html">Add beds</a></button>
+                </div>
+            </div>
+            <div class="col-lg-6 ml-5">
+                <img src="images/doc1.jpg" class="image-fluid pic-bed-1">
+            </div>
+        </div>
+    </section>
+    <section  class="container-fluid py-0 content" id="ab-us">
+        <div class="container c2 d-flex p-3">
+            <div class="col-lg-3"></div>
+            <div class="col-lg-6">
+            <a href="#" class="navbar-brand text-black ">About Us </a>
+            <p class="para1 text-black mt-4">Our Hospital Queue Management System (Care Beds) is a comprehensive, AI-powered solution
+                designed to optimize patient flow and resource allocation in healthcare facilities. It features real-time
+                tracking of bed availability and OPD queues, predictive analytics for demand forecasting, and a triagebased patient prioritization system. The platform facilitates city-wide resource sharing, enabling smooth
+                patient transfers and efficient crisis management during emergencies. With a focus on enhancing
+                patient experience, the system includes a self- service portal for appointment booking and estimated
+                waittimes, all while ensuring data security through block chain and compliance with global privacy
+                standards. Built on robust technologies, the solution is scalable, secure, and tailored to improve over all
+                hospitalefficiency andpatientcare</p>
+            </div>
+            <div class="col-lg-3"></div>
+        </div>
+    </section>
+    
+      
+    <script src="script.js" rel="script"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+        <script> 
+            $(function () {
+                $(document).scroll(function(){
+                var $nav=$("#mainNavbar");
+                $nav.toggleClass("scrolled",$(this).scrollTop() > $nav.height());
+                });
+            });
+    </script>
+</body>
+</html>

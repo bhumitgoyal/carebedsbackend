@@ -1,0 +1,264 @@
+body{
+    background-color: rgb(102, 102, 237);
+    font-family: "Nunito",sans-serif;
+}
+#mainNavbar{
+    font-size: 1.5rem;
+    font-weight: 100;
+}
+.navbar-brand{
+    color: white;
+    padding-left: 20px;
+    font-size: 27px;
+    font-weight: 900;
+}
+#mainNavbar .nav-link:hover{
+    color: white;
+}
+#heading h1{
+    font-weight: 900;
+    font-size: 3rem;
+}
+#heading button{
+    background-color: #212529;
+    color: white;
+}
+#heading button:hover{
+    background-color: rgb(102, 102, 237);
+    color: white;
+    border-color: white;
+}
+.content{
+    margin-top: 100px;
+    margin-bottom: 100px;
+}
+
+.navbar .scrolled{
+    background-color: blueviolet;
+    transition: background 1s;
+}
+#login{
+    margin-right: 20px;
+}
+a{
+    text-decoration: none;
+    color: white;
+}
+.pic-bed-1{
+    height: 100%;
+    width: 100%;
+}
+.para1{
+    margin-left: 15px;
+}
+.cb2{
+    font-weight: 900;
+    font-size: 200px;
+}
+.logo{
+    height: 30px;
+    width: 30px;
+    margin-left: 5px;
+}
+.navbar.scrolled{
+    background: black;
+    transition: background 1s;
+}
+.c2{
+    background-image: url(images/help2.jpg);
+    background-size: cover; 
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 17px;
+    filter: brightness(40%);
+    filter: saturate(20%);
+    height: 450px;
+}
+.b1{
+
+}
+.ab-us{
+    margin-top: 10px;
+}
+.sec-1{
+    height:300px;
+}
+
+
+
+
+
+
+//hos
+.bod-hos{
+    background-color: rgb(33, 33, 133);
+    font-family: "Nunito",sans-serif;
+    color: white;
+}
+.image1{
+    height: 200px;
+    width: 100%;
+}
+.navbar-brand-hos{
+    color: black;
+    font-size: 27px;
+    font-weight: 900;
+    margin-top: 200px;
+}
+.logo-hos{
+    height: 30px;
+    width: 30px;
+    margin-left: 5px;
+}
+.btn-submit-hos{
+    background-color: black;
+    border-color: black;
+}
+.Img-with-text-hos{
+    background-image: url(images/bed1.jpg);
+    height: 300px;
+    margin-top: 50px;
+    border-radius: 15px;
+    background-size: cover; 
+    background-position: center;
+    background-repeat: no-repeat;
+    color: black;
+    filter: brightness(70%);
+    filter: saturate(10%);
+}
+.text-box-hos{
+    padding-top: 140px;
+    padding-left: 30px;
+    font-weight: 400;
+    filter: brightness(100%);
+}
+.form1-hos{
+    margin-top: 30px;
+}
+.font-weight{
+    font-weight: 300;
+}
+
+//pat
+
+.pat-body{
+    background-color: rgb(33, 33, 133);
+    font-family: "Nunito",sans-serif;
+    color: white;
+}
+.image1-pat{
+    height: 200px;
+    width: 100%;
+}
+.navbar-brand-pat{
+    color: black;
+    font-size: 27px;
+    font-weight: 900;
+    margin-top: 200px;
+}
+.logo-pat{
+    height: 30px;
+    width: 30px;
+    margin-left: 5px;
+}
+.btn-submit-pat{
+    background-color: black;
+    border-color: black;
+}
+.Img-with-text-pat{
+    background-image: url(images/bed1.jpg);
+    height: 300px;
+    margin-top: 50px;
+    border-radius: 15px;
+    background-size: cover; 
+    background-position: center;
+    background-repeat: no-repeat;
+    color: black;
+    filter: brightness(70%);
+    filter: saturate(10%);
+}
+.text-box-pat{
+    padding-top: 140px;
+    padding-left: 30px;
+    font-weight: 400;
+    filter: brightness(100%);
+}
+.form1-pat{
+    margin-top: 30px;
+}
+
+.body-login{
+    background-image: url(images/bcg.jpg);
+    color: black;
+    font-family: "Nunito";
+}
+#mainNavbar .navbar-brand-login{
+    color: white;
+    padding-left: 20px;
+    font-size: 40px;
+    font-weight: 900;
+}
+.logo-login{
+    height: 50px;
+    width: 50px;
+    margin-right: 20px;
+}
+.box-login{
+    background-color: white;
+    border-radius: 20px;
+    text-align: center;
+    align-items:center ;
+}
+.small-logos{
+    height:30px;
+    width: 30px;
+}
+.small-ls a{
+    background-color: whitesmoke;
+    border-radius: 7px;
+    margin-left: 5px;
+}
+.h3-login{
+    color: #009D92;
+}
+a{
+    text-decoration: none;
+    color: white;
+}
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  }
+  
+  /* Modal Content/Box */
+  .modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+  }
+  
+  /* The Close Button */
+  .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
