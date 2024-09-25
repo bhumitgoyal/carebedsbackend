@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="24dp"
+    android:background="#FFFFFF">
+
+    <!-- App Logo (Optional) -->
+    <ImageView
+        android:id="@+id/appLogo"
+        android:layout_width="300dp"
+        android:layout_height="101dp"
+        android:src="@drawable/logo_f"
+        android:contentDescription="App Logo"
+        android:layout_marginBottom="40dp"/>
+
+    <!-- Login as Student Button -->
+    <Button
+        android:id="@+id/btnLoginPatient"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Login as Patient"
+        android:background="@drawable/edittextshape"
+        android:drawablePadding="15sp"
+        android:elevation="5dp"
+        android:textSize="18sp"
+        android:layout_marginBottom="24dp"
+        android:backgroundTint="@color/black"
+        android:textColor="#FFFFFF"
+        android:padding="16dp"/>
+
+    <!-- Login as Organizer Button -->
+    <Button
+        android:id="@+id/btnLoginHospital"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Login as Hospital"
+        android:drawablePadding="15sp"
+        android:elevation="5dp"
+        android:background="@drawable/edittextshape"
+        android:textSize="18sp"
+        android:backgroundTint="@color/black"
+        android:textColor="#FFFFFF"
+        android:padding="16dp"/>
+</LinearLayout>
