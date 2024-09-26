@@ -47,6 +47,12 @@ class PatientService(private val patientRepository: PatientRepository) {
         val user = getPatientById(id)
         return user.registeredBed
     }
+    fun prioritySet(id: Int, string: String) {
+        val patient = getPatientById(id)
+        patient.priority = string
+        patientRepository.save(patient)
+
+    }
 
     fun getPatientAllottedHospital(id: Int): Hospital? {
         val user = getPatientById(id)

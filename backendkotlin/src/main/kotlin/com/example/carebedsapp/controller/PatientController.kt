@@ -71,4 +71,10 @@ class PatientController(private val patientService: PatientService,private val h
         val hospital = patientService.getPatientAllottedHospital(id)
         return if (hospital != null) ResponseEntity.ok(hospital) else ResponseEntity.notFound().build()
     }
+    @PostMapping("/{id}/priority/{string}")
+    fun prioritySet(@PathVariable id:Int, @PathVariable string: String):ResponseEntity<String>{
+        patientService.prioritySet(id,string)
+
+        return ResponseEntity.ok("Priority Set")
+    }
 }

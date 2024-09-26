@@ -67,6 +67,7 @@ class HospitalService(
 
         hospital.admittedPatients.add(patient)
         patient.registeredHospital = hospital
+        hospital.availableBeds -= 1
 
         hospitalRepository.save(hospital)
         patientRepository.save(patient)

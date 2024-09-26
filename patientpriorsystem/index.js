@@ -10,8 +10,6 @@ app.use(express.json());
 
 // Endpoint to assign patients and process the queue
 app.get("/test", async (req, res) => {
-  // Clear previous queue data for fresh testing
-  patientQueue.length = 0;
 
   // Fetch hospital and patient data from the respective endpoints
   const hospitalsResponse = await axios.get("http://localhost:8080/hospital");
@@ -25,35 +23,26 @@ app.get("/test", async (req, res) => {
 
   // Prepare the response to show queue state
   const queueOrder = patientQueue.map((patient) => patient.name);
-  // After bed assignments, update the backend
-  for (const hospital of hospitals) {
-    await axios.put(`http://localhost:8080/hospital/${hospital.id}`, hospital);
-  }
-
-  for (const patient of patients) {
-    await axios.put(`http://localhost:8080/patients/${patient.id}`, patient);
-  }
-
-  const assignedPatients = hospitals.map((hospital) => {
-    //axios.put('http://localhost:8080/patients', patients);
-    //axios.put('http://localhost:8080/hospital', hospitals);
-    return {
-      hospitalName: hospital.name,
-      admittedPatients: hospital.admittedPatients,
-    };
-  });
-
-  res.json({
-    queueOrder,
-    assignedPatients,
-  });  
 });
 
 // Home route
 app.get("/", (req, res) => {
   res.send("Hospital Queue Management System is running!");
 });
+// Function to repeatedly call /test every minute
+const runTestEveryMinute = () => {
+  setInterval(async () => {
+    try {
+      const response = await axios.get("http://localhost:3000/test");
+      console.log("Response from /test:", response.data);
+    } catch (error) {
+      console.error("Error calling /test:", error);
+    }
+  }, 15000); // 60000 milliseconds = 1 minute
+};
 
+// Start the test function
+runTestEveryMinute();
 // Start the Express server
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}`);

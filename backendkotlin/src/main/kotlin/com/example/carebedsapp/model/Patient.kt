@@ -10,7 +10,7 @@ data class Patient(
     val id: Int = 0,
 
     val name: String,
-    val priority: String,
+    var priority: String,
     val address: String,
 
 

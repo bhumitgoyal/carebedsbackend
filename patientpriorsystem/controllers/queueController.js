@@ -1,5 +1,6 @@
 const { calculateDistance } = require("../utils/distanceUtils");
 const { getPatientPriority } = require("./mlController");
+const axios = require("axios");
 
 // Queue for patients who can't be assigned immediately
 let patientQueue = [];
@@ -11,7 +12,7 @@ const assignBeds = async (patients, hospitals) => {
 
   const sortedPatients = sortPatientsByPriority(patients); // Now sort them by priority
   for (let patient of sortedPatients) {
-    if (!patient.assigned) {
+    if (!patient.assigned && patient.bedNum == null) {
       const hospital = findAvailableHospital(patient, hospitals);
       if (hospital) {
         assignPatientToHospital(patient, hospital);
@@ -51,19 +52,38 @@ const priorityLevel = (priority) => {
 };
 
 // Assign the patient to a hospital
-const assignPatientToHospital = (patient, hospital) => {
+// Assign the patient to a hospital
+const assignPatientToHospital = async (patient, hospital) => {
+  // Check if the patient is already admitted to the hospital
+  if (
+    hospital.admittedPatients.some(
+      (admittedPatient) => admittedPatient.id === patient.id
+    )
+  ) {
+    return; // Exit if patient is already admitted
+  }
+
   hospital.availableBeds--;
   if (!hospital.admittedPatients) {
     hospital.admittedPatients = []; // Ensure admittedPatients is initialized
   }
 
-  // Log patient details to ensure priority is set before adding to hospital
-  console.log("Assigning patient:", patient);
-
   patient.assigned = true;
-  hospital.admittedPatients.push(patient); // Add patient to admitted list
-
-  console.log(`Assigned patient ${patient.name} to hospital ${hospital.name}`);
+  for (let bed of hospital.beds) {
+    if (bed.availability) {
+      // Wait for the admission request to complete
+      await axios.post(
+        `http://localhost:8080/beds/${bed.id}/admit/${patient.id}`
+      );
+      patient.bedNum = bed.id;
+      bed.availability = false;
+      hospital.admittedPatients.push(patient); // Add patient to admitted list
+      console.log(
+        `Assigned patient ${patient.name} to hospital ${hospital.name}`
+      );
+      break; // Exit the loop after assigning to the first available bed
+    }
+  }
 };
 
 // Find the nearest hospital with available beds

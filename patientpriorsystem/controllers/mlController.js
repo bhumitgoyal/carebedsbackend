@@ -16,6 +16,9 @@ async function getPatientPriority(patient) {
       "http://127.0.0.1:8000/predict",
       getprior
     );
+    await axios.post(
+      `http://127.0.0.1:8080/patients/${patient.id}/priority/${response.data.prediction}`
+    );
     return response.data;
   } catch (error) {
     console.error("Error fetching priority:", error);
