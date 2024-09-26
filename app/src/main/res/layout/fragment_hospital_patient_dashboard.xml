@@ -44,7 +44,7 @@
             app:cardCornerRadius="20dp"
             app:cardElevation="4dp"
             android:backgroundTint="#FFFFFF"
-        android:layout_marginBottom="16dp">
+            android:layout_marginBottom="16dp">
 
             <EditText
                 android:id="@+id/searchPatient"
@@ -55,21 +55,47 @@
                 android:paddingStart="48dp"
                 android:drawableStart="@drawable/ic_search"
                 android:drawablePadding="12dp"
-            android:textSize="16sp"
-            android:background="@drawable/search_bar_background" />
-
-
+                android:textSize="16sp"
+                android:background="@drawable/search_bar_background" />
         </androidx.cardview.widget.CardView>
 
-    <!-- RecyclerView for displaying patients -->
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerViewPatients"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:clipToPadding="false"
-        android:padding="8dp"
-        android:background="#FFFFFF"/>
+        <!-- RecyclerView for displaying patients -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewPatients"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:clipToPadding="false"
+            android:padding="8dp"
+            android:background="#FFFFFF"/>
 
-</LinearLayout>
-    </FrameLayout>
+        <!-- Spacer before logout button -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="16dp" /> <!-- Spacer -->
+
+        <!-- Logout Button -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="4dp"
+            android:backgroundTint="#FF0000"
+
+            android:layout_marginBottom="45dp">
+
+            <Button
+                android:id="@+id/logoutButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Logout"
+                android:textSize="18sp"
+                android:textColor="@android:color/white"
+                android:padding="12dp"
+                android:background="@null"
+
+                android:gravity="center" />
+        </androidx.cardview.widget.CardView>
+
+    </LinearLayout>
+</FrameLayout>

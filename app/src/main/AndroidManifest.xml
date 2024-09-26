@@ -16,6 +16,13 @@
         android:theme="@style/Theme.CareBedsFE"
         tools:targetApi="31">
         <activity
+            android:name=".ui.RegisterNewPatient"
+            android:exported="false" />
+        <activity
+            android:name=".RegisterPatient"
+            android:exported="false"
+            android:theme="@style/Theme.CareBedsFE" />
+        <activity
             android:name=".ui.PatientLoginActivity"
             android:exported="false"
             android:theme="@style/Theme.CareBedsFE" />
@@ -42,7 +49,7 @@
             android:exported="false" />
         <activity
             android:name=".MainActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
     </application>
 
 </manifest>

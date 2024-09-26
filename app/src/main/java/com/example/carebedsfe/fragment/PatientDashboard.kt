@@ -1,6 +1,7 @@
 package com.example.carebedsfe.fragment
 
 import android.content.Context
+import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -14,6 +15,7 @@ import androidx.lifecycle.lifecycleScope
 import com.example.carebedsfe.R
 import com.example.carebedsfe.api.RetrofitInstance
 import com.example.carebedsfe.model.Patient
+import com.example.carebedsfe.ui.BefLoginActivity
 import kotlinx.coroutines.launch
 
 
@@ -27,6 +29,7 @@ class PatientDashboard : Fragment() {
     private lateinit var patientBloodType: TextView
     private lateinit var patientCondition: TextView
     private lateinit var viewBedButton: Button
+    private lateinit var logoutButton: Button
     private var patientId: Int = 0
     private lateinit var sharedPreferences: SharedPreferences
     private var patient: Patient? = null // Changed to nullable
@@ -46,6 +49,15 @@ class PatientDashboard : Fragment() {
         patientBloodType = view.findViewById(R.id.patientBloodType)
         patientCondition = view.findViewById(R.id.patientCondition)
         viewBedButton = view.findViewById(R.id.viewBedButton)
+        logoutButton = view.findViewById(R.id.logoutPatient)
+
+        logoutButton.setOnClickListener {
+            sharedPreferences.edit().clear().apply()
+            val intent = Intent(requireContext(), BefLoginActivity::class.java)
+            startActivity(intent)
+            requireActivity().finish() // Optionally finish the current activity
+        }
+
 
         sharedPreferences = requireActivity().getSharedPreferences("MyAppPrefs", Context.MODE_PRIVATE)
         patientId = sharedPreferences.getLong("USER_ID", 0).toInt()

@@ -6,7 +6,7 @@
     tools:context=".fragment.HospitalScanQRDashboard"
     android:layout_marginBottom="40dp">
 
-    <!-- Camera View -->
+
     <SurfaceView
         android:id="@+id/cameraView"
         android:layout_width="match_parent"
@@ -14,7 +14,7 @@
         android:layout_weight="1"
         android:layout_gravity="center" />
 
-    <!-- TextView to display scanned information -->
+
     <TextView
         android:id="@+id/scannedInfoTextView"
         android:layout_width="match_parent"
