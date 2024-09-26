@@ -24,26 +24,30 @@ app.get("/test", async (req, res) => {
   await assignBeds(patients, hospitals);
 
   // Prepare the response to show queue state
-  const queueOrder = patientQueue.map((patient) => patient.name); // Get names of queued patients
+  const queueOrder = patientQueue.map((patient) => patient.name);
+  // After bed assignments, update the backend
+  for (const hospital of hospitals) {
+    await axios.put(`http://localhost:8080/hospital/${hospital.id}`, hospital);
+  }
+
+  for (const patient of patients) {
+    await axios.put(`http://localhost:8080/patients/${patient.id}`, patient);
+  }
 
   const assignedPatients = hospitals.map((hospital) => {
-
     //axios.put('http://localhost:8080/patients', patients);
     //axios.put('http://localhost:8080/hospital', hospitals);
     return {
       hospitalName: hospital.name,
       admittedPatients: hospital.admittedPatients,
     };
-    
   });
 
   res.json({
     queueOrder,
     assignedPatients,
-  });
+  });  
 });
-
-
 
 // Home route
 app.get("/", (req, res) => {
